@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: cbs-college-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DB_URL
+        value: jdbc:mysql://165.22.161.226:16530/cbs_clg_db?useSSL=true&requireSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      - key: DB_USER
+        value: avnadmin
+      - key: DB_PASSWORD
+        sync: false   # Will be set manually in Render dashboard (secret)
+    healthCheckPath: /
