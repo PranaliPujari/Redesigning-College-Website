@@ -1,0 +1,136 @@
+.application-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: rgba(3, 7, 18, 0.72);
+    backdrop-filter: blur(14px);
+}
+
+.application-modal.active {
+    display: flex;
+}
+
+.application-form-card {
+    width: min(720px, 100%);
+    max-height: 92vh;
+    overflow-y: auto;
+    background: rgba(8, 13, 28, 0.96);
+    border: 1px solid rgba(6, 182, 212, 0.45);
+    border-radius: 24px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+    padding: 2rem;
+    position: relative;
+}
+
+.application-form-card h2 {
+    color: #06b6d4;
+    font-size: 1.8rem;
+    margin-bottom: 0.35rem;
+}
+
+.application-form-card p {
+    color: #cffafe;
+    font-size: 0.9rem;
+    margin-bottom: 1.4rem;
+}
+
+.close-form-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(6, 182, 212, 0.45);
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.close-form-btn:hover {
+    background: rgba(6, 182, 212, 0.25);
+}
+
+.application-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.application-form label {
+    color: #ecfeff;
+    font-size: 0.84rem;
+    font-weight: 600;
+}
+
+.application-form input,
+.application-form select,
+.application-form textarea {
+    width: 100%;
+    border: 1px solid rgba(6, 182, 212, 0.38);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 0.8rem 0.95rem;
+    outline: none;
+}
+
+.application-form input:focus,
+.application-form select:focus,
+.application-form textarea:focus {
+    border-color: #06b6d4;
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.18);
+}
+
+.application-form option {
+    color: #0f172a;
+}
+
+.application-form textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.submit-application-btn {
+    grid-column: 1 / -1;
+    border: none;
+    border-radius: 50px;
+    padding: 0.9rem 1.4rem;
+    background: linear-gradient(45deg, #6366f1, #06b6d4);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(6, 182, 212, 0.25);
+}
+
+.submit-application-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 32px rgba(6, 182, 212, 0.35);
+}
+
+@media (max-width: 900px) {
+    .application-form {
+        grid-template-columns: 1fr;
+    }
+
+    .application-form-card {
+        padding: 1.5rem;
+    }
+}

@@ -1,0 +1,1383 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Chetan Business School | Programs - MCA & MBA Excellence</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Poppins:wght@300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="enroll-modal.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Inter', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #05050a 0%, #11111a 100%);
+            color: #fff;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 20% 40%, rgba(99, 102, 241, 0.12) 0%, rgba(6, 182, 212, 0.05) 50%, transparent 80%);
+            animation: bgMove 25s ease-in-out infinite;
+        }
+
+        @keyframes bgMove {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            33% {
+                transform: translate(-5%, -5%) rotate(2deg);
+            }
+
+            66% {
+                transform: translate(5%, 3%) rotate(-1deg);
+            }
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .floating-shapes div {
+            position: absolute;
+            background: rgba(6, 182, 212, 0.07);
+            border-radius: 50%;
+            animation: floatShape 18s infinite ease-in-out;
+        }
+
+        .shape1 {
+            width: 350px;
+            height: 350px;
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .shape2 {
+            width: 450px;
+            height: 450px;
+            bottom: -150px;
+            right: -100px;
+            animation-delay: -4s;
+            animation-duration: 22s;
+        }
+
+        .shape3 {
+            width: 200px;
+            height: 200px;
+            top: 40%;
+            left: 75%;
+            animation-delay: -7s;
+        }
+
+        .shape4 {
+            width: 150px;
+            height: 150px;
+            bottom: 15%;
+            left: 5%;
+            animation-delay: -2s;
+            animation-duration: 14s;
+        }
+
+        .shape5 {
+            width: 280px;
+            height: 280px;
+            top: 65%;
+            left: 35%;
+            animation-delay: -10s;
+        }
+
+        @keyframes floatShape {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: translateY(-40px) rotate(10deg) scale(1.05);
+            }
+        }
+
+        /* Navbar */
+        .navbar {
+            position: relative;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            flex-wrap: wrap;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(5, 5, 10, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 0.7rem 5%;
+        }
+
+        .logo h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF, #06b6d4, #6366f1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .logo p {
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: #ecfeff;
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: 0.3s;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #06b6d4, #6366f1);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #06b6d4;
+        }
+
+        .enroll-btn {
+            background: linear-gradient(45deg, #6366f1, #06b6d4);
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            font-weight: bold;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .enroll-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.5);
+        }
+
+        .enroll-btn::after {
+            display: none;
+        }
+
+        /* Main Content */
+        .main-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Hero Section */
+        .programs-hero {
+            text-align: center;
+            padding: 5rem 2rem 6rem;
+            background: linear-gradient(135deg, rgba(5, 5, 10, 0.7) 0%, rgba(5, 30, 45, 0.5) 100%);
+            border-bottom: 1px solid rgba(6, 182, 212, 0.3);
+        }
+
+        .programs-hero h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF, #06b6d4, #6366f1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            animation: titleReveal 0.8s ease-out;
+        }
+
+        .programs-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #e0f2fe;
+            animation: fadeUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes titleReveal {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Program Cards Section */
+        .programs-section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #FFFFFF, #06b6d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #06b6d4, #6366f1);
+            border-radius: 3px;
+        }
+
+        .program-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border-radius: 40px;
+            overflow: hidden;
+            margin-bottom: 4rem;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            border-color: #06b6d4;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), 0 0 30px rgba(6, 182, 212, 0.1);
+        }
+
+        .program-header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 2.5rem;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(6, 182, 212, 0.1));
+            border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        .program-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .program-title i {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #06b6d4, #6366f1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .program-title h2 {
+            font-size: 1.8rem;
+            color: #06b6d4;
+        }
+
+        .program-badge {
+            background: rgba(6, 182, 212, 0.2);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(6, 182, 212, 0.5);
+        }
+
+        .program-body {
+            padding: 2rem 2.5rem;
+        }
+
+        .program-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .detail-item {
+            flex: 1;
+            min-width: 150px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.8rem 1.2rem;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .detail-item:hover {
+            background: rgba(99, 102, 241, 0.2);
+            transform: translateX(5px);
+        }
+
+        .detail-item i {
+            font-size: 1.5rem;
+            color: #06b6d4;
+        }
+
+        .detail-item span strong {
+            display: block;
+            font-size: 0.8rem;
+            color: #a5f3fc;
+        }
+
+        .detail-item span p {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .program-description {
+            color: #cffafe;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-tag {
+            background: rgba(6, 182, 212, 0.15);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .feature-tag:hover {
+            background: rgba(99, 102, 241, 0.4);
+            transform: scale(1.02);
+        }
+
+        .program-footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        .apply-link {
+            background: linear-gradient(45deg, #6366f1, #06b6d4);
+            padding: 0.7rem 2rem;
+            border-radius: 40px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .apply-link:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .syllabus-link {
+            color: #06b6d4;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .syllabus-link:hover {
+            transform: translateX(5px);
+            color: white;
+        }
+
+        /* MCA Specializations Section */
+        .specializations {
+            padding: 3rem 5% 5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .specializations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .spec-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 32px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(6, 182, 212, 0.15);
+        }
+
+        .spec-card:hover {
+            transform: translateY(-10px);
+            border-color: #06b6d4;
+            background: rgba(99, 102, 241, 0.12);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .spec-card i {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #06b6d4, #6366f1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .spec-card h4 {
+            font-size: 1.3rem;
+            color: #06b6d4;
+            margin-bottom: 0.8rem;
+        }
+
+        .spec-card p {
+            color: #cffafe;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Admission CTA */
+        .admission-cta {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(6, 182, 212, 0.1));
+            margin: 2rem 5% 4rem;
+            padding: 3rem;
+            border-radius: 50px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+
+        .admission-cta h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #06b6d4;
+        }
+
+        .admission-cta p {
+            margin-bottom: 1.5rem;
+            color: #cffafe;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #6366f1, #06b6d4);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.5);
+        }
+
+        /* Contact Strip */
+        .contact-strip {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 1.2rem 5%;
+            gap: 1.5rem;
+            border-top: 1px solid rgba(6, 182, 212, 0.3);
+            border-bottom: 1px solid rgba(6, 182, 212, 0.3);
+            margin-top: 2rem;
+        }
+
+        .contact-info span,
+        .contact-info a {
+            color: #ecfeff;
+            margin-right: 1.5rem;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .contact-info span:hover,
+        .contact-info a:hover {
+            color: #06b6d4;
+        }
+
+        .contact-info i {
+            margin-right: 6px;
+            color: #06b6d4;
+        }
+
+        /* Footer */
+        .premium-footer {
+            background: linear-gradient(145deg, #030305 0%, #05050a 100%);
+            border-top: 2px solid rgba(6, 182, 212, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-waves {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+            opacity: 0.4;
+        }
+
+        .footer-waves svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 60px;
+        }
+
+        .footer-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 3rem 5% 2rem;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2.5rem;
+        }
+
+        .footer-brand {
+            flex: 1.2;
+            min-width: 220px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.9rem;
+            background: linear-gradient(135deg, #fff, #06b6d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(6, 182, 212, 0.15);
+            border-radius: 50%;
+            color: #06b6d4;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background: #6366f1;
+            color: white;
+            transform: translateY(-5px) rotate(360deg);
+        }
+
+        .footer-links {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .footer-links h4 {
+            color: #06b6d4;
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+        }
+
+        .footer-links h4:after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, #06b6d4, transparent);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-links a {
+            color: #cffafe;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-links a:hover {
+            color: #06b6d4;
+            transform: translateX(8px);
+        }
+
+        .footer-newsletter {
+            flex: 1.2;
+            min-width: 240px;
+        }
+
+        .footer-newsletter h4 {
+            color: #06b6d4;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border-radius: 50px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 0.85rem;
+            outline: none;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            transition: 0.3s;
+        }
+
+        .newsletter-form input:focus {
+            border-color: #06b6d4;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .newsletter-form button {
+            background: linear-gradient(45deg, #6366f1, #06b6d4);
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 50px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .application-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background: rgba(3, 7, 18, 0.72);
+            backdrop-filter: blur(14px);
+        }
+
+        .application-modal.active {
+            display: flex;
+        }
+
+        .application-form-card {
+            width: min(720px, 100%);
+            max-height: 92vh;
+            overflow-y: auto;
+            background: rgba(8, 13, 28, 0.96);
+            border: 1px solid rgba(6, 182, 212, 0.45);
+            border-radius: 24px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+            padding: 2rem;
+            position: relative;
+        }
+
+        .application-form-card h2 {
+            color: #06b6d4;
+            font-size: 1.8rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .application-form-card p {
+            color: #cffafe;
+            font-size: 0.9rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .close-form-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid rgba(6, 182, 212, 0.45);
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .close-form-btn:hover {
+            background: rgba(6, 182, 212, 0.25);
+        }
+
+        .application-form {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .application-form label {
+            color: #ecfeff;
+            font-size: 0.84rem;
+            font-weight: 600;
+        }
+
+        .application-form input,
+        .application-form select,
+        .application-form textarea {
+            width: 100%;
+            border: 1px solid rgba(6, 182, 212, 0.38);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            font-family: inherit;
+            font-size: 0.95rem;
+            padding: 0.8rem 0.95rem;
+            outline: none;
+        }
+
+        .application-form input:focus,
+        .application-form select:focus,
+        .application-form textarea:focus {
+            border-color: #06b6d4;
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.18);
+        }
+
+        .application-form option {
+            color: #0f172a;
+        }
+
+        .application-form textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .submit-application-btn {
+            grid-column: 1 / -1;
+            border: none;
+            border-radius: 50px;
+            padding: 0.9rem 1.4rem;
+            background: linear-gradient(45deg, #6366f1, #06b6d4);
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(6, 182, 212, 0.25);
+        }
+
+        .submit-application-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 32px rgba(6, 182, 212, 0.35);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 1.5rem;
+            border-top: 1px solid rgba(6, 182, 212, 0.2);
+            font-size: 0.8rem;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 900px) {
+            .navbar {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .programs-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .program-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .program-title {
+                flex-direction: column;
+            }
+
+            .program-body {
+                padding: 1.5rem;
+            }
+
+            .program-details {
+                flex-direction: column;
+            }
+
+            .contact-strip {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .admission-cta h3 {
+                font-size: 1.5rem;
+            }
+
+            .application-form {
+                grid-template-columns: 1fr;
+            }
+
+            .application-form-card {
+                padding: 1.5rem;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0f;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #6366f1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="animated-bg">
+        <div class="floating-shapes">
+            <div class="shape1"></div>
+            <div class="shape2"></div>
+            <div class="shape3"></div>
+            <div class="shape4"></div>
+            <div class="shape5"></div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <nav class="navbar" id="navbar">
+            <div class="logo">
+                <img src="images/cbs-logo.webp" alt="CBS Logo" style="height: 90px; margin-top: 5px;">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="programs.html" class="active">Programs</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="placement.html">Placements</a></li>
+                <li><a href="blog.html">Blogs</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="#" class="enroll-btn">ENROLL NOW <i class="fas fa-arrow-right"></i></a></li>
+            </ul>
+        </nav>
+
+        <div class="programs-hero">
+            <h1>Our Academic Programs</h1>
+            <p>Industry-focused postgraduate programs designed to shape tomorrow's technology and business leaders</p>
+        </div>
+
+        <div class="programs-section">
+            <!-- MCA Program Card -->
+            <div class="program-card" data-aos="fade-up" data-aos-duration="800">
+                <div class="program-header">
+                    <div class="program-title">
+                        <i class="fas fa-laptop-code"></i>
+                        <h2>Master of Computer Applications (MCA)</h2>
+                    </div>
+                    <div class="program-badge">
+                        <i class="fas fa-check-circle"></i> AICTE Approved
+                    </div>
+                </div>
+                <div class="program-body">
+                    <div class="program-details">
+                        <div class="detail-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span><strong>Duration</strong>
+                                <p>2 Years (Full Time)</p>
+                            </span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-users"></i>
+                            <span><strong>Intake</strong>
+                                <p>120 Seats</p>
+                            </span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span><strong>Eligibility</strong>
+                                <p>Graduation with 50% (45% for reserved)</p>
+                            </span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-university"></i>
+                            <span><strong>Affiliation</strong>
+                                <p>Karnataka University, Dharwad</p>
+                            </span>
+                        </div>
+                    </div>
+                    <p class="program-description">
+                        The MCA program at Chetan Business School is a comprehensive postgraduate degree designed for
+                        aspiring IT professionals.
+                        The curriculum covers advanced areas including Programming, Database Management, Software
+                        Engineering, Web Technologies,
+                        Data Structures, Network Security, Artificial Intelligence, and Machine Learning. Students gain
+                        hands-on experience
+                        through lab sessions, industry projects, and internships.
+                    </p>
+                    <div class="program-features">
+                        <span class="feature-tag"><i class="fab fa-python"></i> Python Programming</span>
+                        <span class="feature-tag"><i class="fas fa-database"></i> DBMS</span>
+                        <span class="feature-tag"><i class="fas fa-robot"></i> AI & ML</span>
+                        <span class="feature-tag"><i class="fas fa-shield-alt"></i> Cyber Security</span>
+                        <span class="feature-tag"><i class="fas fa-chart-line"></i> Data Science</span>
+                        <span class="feature-tag"><i class="fas fa-cloud"></i> Cloud Computing</span>
+                    </div>
+                    <div class="program-footer">
+                        <a href="#" class="apply-link js-open-application"><i class="fas fa-paper-plane"></i> Apply Now
+                            2025</a>
+                        <a href="MCA-I-to-IV-Semester-Syllabus-2024-25.pdf" class="syllabus-link" target="_blank"
+                            rel="noopener"><i class="fas fa-file-pdf"></i> Download MCA Syllabus (I-IV Sem)</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="application-modal" id="applicationModal" aria-hidden="true">
+                <div class="application-form-card" role="dialog" aria-modal="true" aria-labelledby="applicationTitle">
+                    <button class="close-form-btn" type="button" id="closeApplicationForm"
+                        aria-label="Close application form">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <h2 id="applicationTitle">Admission Form 2025</h2>
+                    <p>Fill in your details and our admission team will contact you shortly.</p>
+                    <form class="application-form" id="applicationForm">
+                        <div class="form-group">
+                            <label for="studentName">Full Name</label>
+                            <input type="text" id="studentName" name="studentName" placeholder="Enter your name"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber">Mobile Number</label>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="+91 98765 43210"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailAddress">Email Address</label>
+                            <input type="email" id="emailAddress" name="emailAddress" placeholder="you@example.com"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="programChoice">Program</label>
+                            <select id="programChoice" name="programChoice" required>
+                                <option value="MCA">MCA</option>
+                                <option value="MBA">MBA</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="qualification">Highest Qualification</label>
+                            <input type="text" id="qualification" name="qualification"
+                                placeholder="BCA, B.Sc, B.Com, etc." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="percentage">Percentage / CGPA</label>
+                            <input type="text" id="percentage" name="percentage" placeholder="Example: 72% or 8.1 CGPA"
+                                required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message"
+                                placeholder="Tell us if you have any questions"></textarea>
+                        </div>
+                        <button class="submit-application-btn" type="submit">
+                            <i class="fas fa-paper-plane"></i> Submit Application
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- MBA Program Card -->
+            <div class="program-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                <div class="program-header">
+                    <div class="program-title">
+                        <i class="fas fa-chart-line"></i>
+                        <h2>Master of Business Administration (MBA)</h2>
+                    </div>
+                    <div class="program-badge">
+                        <i class="fas fa-check-circle"></i> AICTE Approved
+                    </div>
+                </div>
+                <div class="program-body">
+                    <div class="program-details">
+                        <div class="detail-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span><strong>Duration</strong>
+                                <p>2 Years (Full Time)</p>
+                            </span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-users"></i>
+                            <span><strong>Intake</strong>
+                                <p>180 Seats</p>
+                            </span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span><strong>Eligibility</strong>
+                                <p>Graduation with 50% (45% for reserved)</p>
+                            </span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-university"></i>
+                            <span><strong>Affiliation</strong>
+                                <p>Karnataka University, Dharwad</p>
+                            </span>
+                        </div>
+                    </div>
+                    <p class="program-description">
+                        The MBA program at CBS develops strategic thinking, leadership qualities, and managerial
+                        excellence. With specializations
+                        in Marketing, Finance, HR, and Business Analytics, students gain practical knowledge through
+                        case studies, industry
+                        interactions, and live projects. The curriculum is designed to meet global business challenges.
+                    </p>
+                    <div class="program-features">
+                        <span class="feature-tag"><i class="fas fa-chart-simple"></i> Marketing</span>
+                        <span class="feature-tag"><i class="fas fa-coins"></i> Finance</span>
+                        <span class="feature-tag"><i class="fas fa-users-gear"></i> HR</span>
+                        <span class="feature-tag"><i class="fas fa-chart-pie"></i> Business Analytics</span>
+                        <span class="feature-tag"><i class="fas fa-handshake"></i> Industry Exposure</span>
+                        <span class="feature-tag"><i class="fas fa-briefcase"></i> 100% Placements</span>
+                    </div>
+                    <div class="program-footer">
+                        <a href="#" class="apply-link js-open-application"><i class="fas fa-paper-plane"></i> Apply Now
+                            2025</a>
+                        <a href="#" class="syllabus-link"><i class="fas fa-file-pdf"></i> Download MBA Syllabus (I-IV
+                            Sem)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MCA Specializations -->
+        <div class="specializations" data-aos="fade-up">
+            <h2 class="section-title">MCA Specializations</h2>
+            <div class="specializations-grid">
+                <div class="spec-card" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-robot"></i>
+                    <h4>Artificial Intelligence & ML</h4>
+                    <p>Deep learning, neural networks, computer vision, and natural language processing.</p>
+                </div>
+                <div class="spec-card" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-chart-simple"></i>
+                    <h4>Data Science</h4>
+                    <p>Big data analytics, data visualization, predictive modeling, and business intelligence.</p>
+                </div>
+                <div class="spec-card" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-shield-hawk"></i>
+                    <h4>Cyber Security</h4>
+                    <p>Network security, cryptography, ethical hacking, and security compliance.</p>
+                </div>
+                <div class="spec-card" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fas fa-cloud-arrow-up"></i>
+                    <h4>Cloud Computing</h4>
+                    <p>AWS, Azure, DevOps, containerization, and cloud architecture.</p>
+                </div>
+                <div class="spec-card" data-aos="zoom-in" data-aos-delay="500">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h4>Web & App Development</h4>
+                    <p>Full-stack development, React, Node.js, Flutter, and modern frameworks.</p>
+                </div>
+                <div class="spec-card" data-aos="zoom-in" data-aos-delay="600">
+                    <i class="fas fa-network-wired"></i>
+                    <h4>IoT & Embedded Systems</h4>
+                    <p>Internet of Things, smart devices, sensors, and embedded programming.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admission CTA 
+    <div class="admission-cta" data-aos="fade-up" data-aos-delay="100">
+        <h3>ðŸŽ“ Admissions Open for 2025 Batch</h3>
+        <p>Limited seats available. Apply now and take the first step towards a brilliant career!</p>
+        <a href="#" class="cta-button js-open-application"><i class="fas fa-rocket"></i> Register for Admission</a>
+    </div>-->
+
+
+
+        <footer class="premium-footer">
+            <div class="footer-waves">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                    <path fill="#6366f1" fill-opacity="0.25"
+                        d="M0,192L48,197.3C96,203,192,213,288,208C384,203,480,181,576,176C672,171,768,181,864,197.3C960,213,1056,235,1152,224C1248,213,1344,171,1392,149.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                    </path>
+                    <path fill="#06b6d4" fill-opacity="0.15"
+                        d="M0,256L48,240C96,224,192,192,288,186.7C384,181,480,203,576,224C672,245,768,267,864,256C960,245,1056,203,1152,192C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                    </path>
+                </svg>
+            </div>
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <h3><i class="fas fa-graduation-cap"></i> Chetan Business School</h3>
+                    <p>Institute of Management, IT & Research<br>Approved by AICTE | Affiliated to Karnataka University,
+                        Dharwad</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About CBS</a></li>
+                        <li><a href="programs.html"><i class="fas fa-chevron-right"></i> MCA Program</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> MBA Program</a></li>
+                        <li><a href="placement.html"><i class="fas fa-chevron-right"></i> Placements</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Admission Process</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Fee Structure</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Scholarships</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Campus Tour</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p style="font-size:0.8rem; margin-bottom:1rem; color:#cffafe;">Subscribe for latest updates &
+                        events</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button><i class="fas fa-paper-plane"></i> Subscribe</button>
+                    </div>
+                    <div style="margin-top: 1.5rem;">
+                        <p style="font-size:0.8rem;"><i class="fas fa-map-marker-alt"></i> 100ft Road, Tajnagar,
+                            Hubballi, Karnataka 580031</p>
+                        <p style="font-size:0.8rem; margin-top:6px;"><i class="fas fa-envelope"></i>
+                            info@chetanschool.org | <i class="fas fa-phone-alt"></i> +91 733-787-9532</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Â© 2025 Chetan Business School - All Rights Reserved. | Designed with <i class="fas fa-heart"
+                        style="color:#06b6d4;"></i> for future innovators</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        const applicationModal = document.getElementById('applicationModal');
+        const closeApplicationForm = document.getElementById('closeApplicationForm');
+        const applicationForm = document.getElementById('applicationForm');
+        const firstApplicationInput = document.getElementById('studentName');
+
+        function openApplicationForm(event) {
+            event.preventDefault();
+            applicationModal.classList.add('active');
+            applicationModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            firstApplicationInput.focus();
+        }
+
+        function closeApplicationModal() {
+            applicationModal.classList.remove('active');
+            applicationModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.js-open-application').forEach((button) => {
+            button.addEventListener('click', openApplicationForm);
+        });
+
+        closeApplicationForm.addEventListener('click', closeApplicationModal);
+        applicationModal.addEventListener('click', (event) => {
+            if (event.target === applicationModal) {
+                closeApplicationModal();
+            }
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && applicationModal.classList.contains('active')) {
+                closeApplicationModal();
+            }
+        });
+        applicationForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            alert('Thank you! Your application details have been received.');
+            applicationForm.reset();
+            closeApplicationModal();
+        });
+    </script>
+    <script src="enroll-modal.js"></script>
+
+    <link rel="stylesheet" href="css/chatbot.css">
+    <script src="js/chatbot.js"></script>
+</body>
+
+</html>

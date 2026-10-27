@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Focused Group Discussion Expert Session</title>
+  <desc id="desc">Poster for a Mastering Group Discussions expert session with Howard Wylde on 26 March 2026.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset="0.55" stop-color="#eef6fb"/>
+      <stop offset="1" stop-color="#ddebf3"/>
+    </linearGradient>
+    <linearGradient id="navy" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#092237"/>
+      <stop offset="1" stop-color="#0f4b66"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b47a0d"/>
+      <stop offset="0.45" stop-color="#f3c746"/>
+      <stop offset="1" stop-color="#9b6508"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#082033" flood-opacity="0.22"/>
+    </filter>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="2.2" fill="#0f4b66" opacity="0.08"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect width="1200" height="900" fill="url(#dots)"/>
+  <path d="M0 682C180 620 310 618 487 672C676 730 851 727 1200 585V900H0Z" fill="url(#navy)"/>
+  <path d="M0 751C221 660 416 674 610 728C810 805 980 776 1200 674V739C953 852 762 861 552 781C368 711 189 720 0 812Z" fill="url(#gold)" opacity="0.95"/>
+  <path d="M0 793C217 707 409 720 604 774C809 830 973 821 1200 718V755C976 863 798 873 591 818C382 762 197 757 0 842Z" fill="#fff" opacity="0.8"/>
+
+  <g transform="translate(84 54)">
+    <circle cx="54" cy="54" r="48" fill="#fff" stroke="#0f4b66" stroke-width="4"/>
+    <path d="M28 62L54 34L80 62V78H28Z" fill="#2bb3e9"/>
+    <path d="M38 62H70V78H38Z" fill="#0f4b66"/>
+    <text x="112" y="45" font-family="Georgia, serif" font-size="60" font-weight="700" fill="#0f4b66">CBS</text>
+    <text x="112" y="76" font-family="Poppins, Arial, sans-serif" font-size="18" fill="#0f4b66">Institute of Management, IT and Research</text>
+  </g>
+
+  <g font-family="Poppins, Arial, sans-serif" fill="#0f2d45">
+    <text x="480" y="82" font-size="36" font-weight="600">DKS Education Trust's</text>
+    <text x="480" y="128" font-size="44" font-weight="800">CHETAN BUSINESS SCHOOL</text>
+    <text x="480" y="168" font-size="30" font-weight="500">Institute of Management and Research, Hubli</text>
+    <text x="480" y="210" font-size="20" font-weight="600">Affiliated to Karnatak University, Dharwad, Approved by AICTE, New Delhi</text>
+  </g>
+
+  <g font-family="Poppins, Arial, sans-serif">
+    <text x="122" y="323" font-size="72" font-style="italic" font-weight="700" fill="#aa7410">Mastering</text>
+    <text x="122" y="407" font-size="86" font-weight="900" fill="#123c5a">Group</text>
+    <text x="122" y="501" font-size="98" font-weight="900" fill="#123c5a">Discussions:</text>
+    <rect x="122" y="532" width="386" height="58" rx="10" fill="#a66c08"/>
+    <text x="144" y="573" font-size="36" font-weight="800" fill="#fff" letter-spacing="2">EXPERT SESSION</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <circle cx="407" cy="668" r="160" fill="#fff"/>
+    <circle cx="407" cy="668" r="148" fill="#d7e6ee" stroke="url(#gold)" stroke-width="11"/>
+    <circle cx="407" cy="624" r="74" fill="#506a79"/>
+    <path d="M269 784C294 707 350 667 407 667C466 667 519 707 546 784Z" fill="#b82e29"/>
+    <path d="M327 625C347 576 389 550 437 562C481 573 508 612 494 662C453 646 399 639 327 625Z" fill="#687b86"/>
+    <circle cx="374" cy="639" r="8" fill="#263849"/>
+    <circle cx="454" cy="639" r="8" fill="#263849"/>
+    <path d="M371 692C401 712 433 711 462 690" fill="none" stroke="#704a3d" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+  <g font-family="Poppins, Arial, sans-serif">
+    <text x="700" y="593" font-size="32" font-weight="700" fill="#c92026">With</text>
+    <text x="700" y="650" font-size="58" font-weight="900" fill="#c92026">Howard Wylde</text>
+    <rect x="684" y="696" width="465" height="76" rx="0" fill="#102d44"/>
+    <rect x="684" y="696" width="90" height="76" fill="#173c58"/>
+    <path d="M718 717V759M704 731H754M710 710V724M744 710V724" stroke="#f2c344" stroke-width="8" stroke-linecap="round"/>
+    <text x="798" y="745" font-size="34" font-weight="800" fill="#fff">26 March 2026</text>
+  </g>
+
+  <g font-family="Poppins, Arial, sans-serif">
+    <rect x="102" y="805" width="385" height="52" rx="10" fill="#020509"/>
+    <text x="126" y="841" font-size="30" font-weight="800" fill="#fff">www.chetanbschool.org</text>
+    <text x="114" y="879" font-size="20" font-weight="600" fill="#fff">100 Feet Road, Tajanagar, Srinagar, Unkal, Hubballi</text>
+  </g>
+</svg>

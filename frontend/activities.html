@@ -1,0 +1,1596 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Chetan Business School | Activities - Campus Life & Events</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Poppins:wght@300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="enroll-modal.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Inter', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #05050a 0%, #11111a 100%);
+            color: #fff;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 20% 40%, rgba(99, 102, 241, 0.12) 0%, rgba(6, 182, 212, 0.05) 50%, transparent 80%);
+            animation: bgMove 25s ease-in-out infinite;
+        }
+
+        @keyframes bgMove {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            33% {
+                transform: translate(-5%, -5%) rotate(2deg);
+            }
+
+            66% {
+                transform: translate(5%, 3%) rotate(-1deg);
+            }
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .floating-shapes div {
+            position: absolute;
+            background: rgba(6, 182, 212, 0.07);
+            border-radius: 50%;
+            animation: floatShape 18s infinite ease-in-out;
+        }
+
+        .shape1 {
+            width: 350px;
+            height: 350px;
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .shape2 {
+            width: 450px;
+            height: 450px;
+            bottom: -150px;
+            right: -100px;
+            animation-delay: -4s;
+            animation-duration: 22s;
+        }
+
+        .shape3 {
+            width: 200px;
+            height: 200px;
+            top: 40%;
+            left: 75%;
+            animation-delay: -7s;
+        }
+
+        .shape4 {
+            width: 150px;
+            height: 150px;
+            bottom: 15%;
+            left: 5%;
+            animation-delay: -2s;
+        }
+
+        .shape5 {
+            width: 280px;
+            height: 280px;
+            top: 65%;
+            left: 35%;
+            animation-delay: -10s;
+        }
+
+        @keyframes floatShape {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: translateY(-40px) rotate(10deg) scale(1.05);
+            }
+        }
+
+        /* Navbar */
+        .navbar {
+            position: relative;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            flex-wrap: wrap;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(5, 5, 10, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 0.7rem 5%;
+        }
+
+        .logo h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF, #06b6d4, #6366f1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo p {
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: #ecfeff;
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: 0.3s;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #06b6d4, #6366f1);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #06b6d4;
+        }
+
+        .enroll-btn {
+            background: linear-gradient(45deg, #6366f1, #06b6d4);
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            font-weight: bold;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .enroll-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.5);
+        }
+
+        .enroll-btn::after {
+            display: none;
+        }
+
+        /* Hero Section */
+        .activities-hero {
+            text-align: center;
+            padding: 5rem 2rem 6rem;
+            background: linear-gradient(135deg, rgba(5, 5, 10, 0.7) 0%, rgba(5, 30, 45, 0.5) 100%);
+            border-bottom: 1px solid rgba(6, 182, 212, 0.3);
+        }
+
+        .activities-hero h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFFFFF, #06b6d4, #6366f1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            animation: titleReveal 0.8s ease-out;
+        }
+
+        .activities-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #e0f2fe;
+            animation: fadeUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes titleReveal {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #FFFFFF, #06b6d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #06b6d4, #6366f1);
+            border-radius: 3px;
+        }
+
+        /* Activity Categories */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 5% 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-btn {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: linear-gradient(45deg, #6366f1, #06b6d4);
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Activities Grid */
+        .activities-grid {
+            padding: 3rem 5% 5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .activity-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border-radius: 32px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            position: relative;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px);
+            border-color: #06b6d4;
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(6, 182, 212, 0.1);
+        }
+
+        .card-icon {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(6, 182, 212, 0.1));
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+        }
+
+        .card-icon i {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #06b6d4, #6366f1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .card-poster {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background: rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+            overflow: hidden;
+        }
+
+        .card-poster img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.8rem;
+        }
+
+        .card-content h3 {
+            font-size: 1.4rem;
+            color: #06b6d4;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content .tag {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.2);
+            padding: 0.2rem 1rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            margin-bottom: 1rem;
+            color: #06b6d4;
+        }
+
+        .card-content p {
+            color: #cffafe;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        .card-footer {
+            padding: 1rem 1.8rem 1.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .event-date {
+            font-size: 0.8rem;
+            color: #a5f3fc;
+        }
+
+        .event-date i {
+            margin-right: 5px;
+            color: #06b6d4;
+        }
+
+        .event-link {
+            color: #06b6d4;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .event-link:hover {
+            transform: translateX(5px);
+            color: white;
+        }
+
+        .details-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
+        }
+
+        .details-modal.active {
+            display: flex;
+        }
+
+        .details-dialog {
+            width: min(1000px, 100%);
+            max-height: 92vh;
+            overflow-y: auto;
+            background: linear-gradient(145deg, rgba(8, 15, 28, 0.98), rgba(13, 42, 57, 0.98));
+            border: 1px solid rgba(6, 182, 212, 0.35);
+            border-radius: 24px;
+            box-shadow: 0 28px 70px rgba(0, 0, 0, 0.55);
+            position: relative;
+        }
+
+        .details-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.45);
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.1rem;
+            z-index: 2;
+            transition: 0.3s;
+        }
+
+        .details-close:hover {
+            background: #06b6d4;
+            border-color: #06b6d4;
+        }
+
+        .details-body {
+            display: grid;
+            grid-template-columns: minmax(280px, 0.95fr) minmax(280px, 1fr);
+            gap: 2rem;
+            padding: 2rem;
+            align-items: center;
+        }
+
+        .details-body img {
+            width: 100%;
+            max-height: 520px;
+            object-fit: contain;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: #fff;
+        }
+
+        .details-copy h3 {
+            color: #06b6d4;
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .details-copy .tag {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.2);
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-bottom: 1rem;
+            color: #06b6d4;
+        }
+
+        .details-copy p {
+            color: #cffafe;
+            line-height: 1.7;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Upcoming Events Section */
+        .upcoming-events {
+            padding: 3rem 5% 5rem;
+            background: rgba(5, 5, 10, 0.4);
+            backdrop-filter: blur(8px);
+            margin: 2rem 0;
+        }
+
+        .events-timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 28px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(6, 182, 212, 0.15);
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            border-color: #06b6d4;
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .event-date-box {
+            min-width: 100px;
+            text-align: center;
+            background: linear-gradient(135deg, #6366f1, #06b6d4);
+            border-radius: 20px;
+            padding: 0.8rem;
+        }
+
+        .event-date-box .day {
+            font-size: 1.8rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .event-date-box .month {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .event-details {
+            flex: 1;
+        }
+
+        .event-details h4 {
+            font-size: 1.2rem;
+            color: #06b6d4;
+            margin-bottom: 0.3rem;
+        }
+
+        .event-details p {
+            color: #cffafe;
+            font-size: 0.85rem;
+        }
+
+        .event-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: #a5f3fc;
+        }
+
+        .register-btn {
+            background: rgba(6, 182, 212, 0.15);
+            border: 1px solid #06b6d4;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            color: #06b6d4;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: 0.3s;
+            align-self: center;
+        }
+
+        .register-btn:hover {
+            background: #6366f1;
+            color: white;
+            border-color: #6366f1;
+        }
+
+        /* Photo Gallery Preview */
+        .gallery-preview {
+            padding: 3rem 5% 5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(6, 182, 212, 0.15);
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            border-color: #06b6d4;
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .gallery-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(6, 182, 212, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .gallery-icon i {
+            font-size: 3rem;
+            color: #06b6d4;
+        }
+
+        .gallery-item h4 {
+            color: #06b6d4;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-item p {
+            color: #cffafe;
+            font-size: 0.85rem;
+        }
+
+        /* Contact Strip */
+        .contact-strip {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 1.2rem 5%;
+            gap: 1.5rem;
+            border-top: 1px solid rgba(6, 182, 212, 0.3);
+            border-bottom: 1px solid rgba(6, 182, 212, 0.3);
+        }
+
+        .contact-info span,
+        .contact-info a {
+            color: #ecfeff;
+            margin-right: 1.5rem;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .contact-info span:hover,
+        .contact-info a:hover {
+            color: #06b6d4;
+        }
+
+        .contact-info i {
+            margin-right: 6px;
+            color: #06b6d4;
+        }
+
+        /* Footer */
+        .premium-footer {
+            background: linear-gradient(145deg, #030305 0%, #05050a 100%);
+            border-top: 2px solid rgba(6, 182, 212, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-waves {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+            opacity: 0.4;
+        }
+
+        .footer-waves svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 60px;
+        }
+
+        .footer-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 3rem 5% 2rem;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2.5rem;
+        }
+
+        .footer-brand {
+            flex: 1.2;
+            min-width: 220px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.9rem;
+            background: linear-gradient(135deg, #fff, #06b6d4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(6, 182, 212, 0.15);
+            border-radius: 50%;
+            color: #06b6d4;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background: #6366f1;
+            color: white;
+            transform: translateY(-5px) rotate(360deg);
+        }
+
+        .footer-links {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .footer-links h4 {
+            color: #06b6d4;
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+        }
+
+        .footer-links h4:after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, #06b6d4, transparent);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-links a {
+            color: #cffafe;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-links a:hover {
+            color: #06b6d4;
+            transform: translateX(8px);
+        }
+
+        .footer-newsletter {
+            flex: 1.2;
+            min-width: 240px;
+        }
+
+        .footer-newsletter h4 {
+            color: #06b6d4;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border-radius: 50px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 0.85rem;
+            outline: none;
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            transition: 0.3s;
+        }
+
+        .newsletter-form input:focus {
+            border-color: #06b6d4;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .newsletter-form button {
+            background: linear-gradient(45deg, #6366f1, #06b6d4);
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 50px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 1.5rem;
+            border-top: 1px solid rgba(6, 182, 212, 0.2);
+            font-size: 0.8rem;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 900px) {
+            .navbar {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .activities-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .event-date-box {
+                align-self: center;
+            }
+
+            .contact-strip {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .categories {
+                gap: 0.8rem;
+            }
+
+            .category-btn {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.8rem;
+            }
+
+            .details-body {
+                grid-template-columns: 1fr;
+                padding: 1.2rem;
+            }
+
+            .details-copy h3 {
+                font-size: 1.35rem;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0f;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #6366f1;
+            border-radius: 10px;
+        }
+
+        .hidden-category {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="animated-bg">
+        <div class="floating-shapes">
+            <div class="shape1"></div>
+            <div class="shape2"></div>
+            <div class="shape3"></div>
+            <div class="shape4"></div>
+            <div class="shape5"></div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <nav class="navbar" id="navbar">
+            <div class="logo">
+                <img src="images/cbs-logo.webp" alt="CBS Logo" style="height: 90px; margin-top: 5px;">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="activities.html" class="active">Activities</a></li>
+                <li><a href="placement.html">Placements</a></li>
+                <li><a href="blog.html">Blogs</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="#" class="enroll-btn">ENROLL NOW <i class="fas fa-arrow-right"></i></a></li>
+            </ul>
+        </nav>
+
+        <div class="activities-hero">
+            <h1>Campus Life & Activities</h1>
+            <p>Beyond academics - Experience holistic development through workshops, events, competitions, and cultural
+                fests</p>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="categories" data-aos="fade-up">
+            <button class="category-btn active" data-category="all">All Activities</button>
+            <button class="category-btn" data-category="workshop">Workshops</button>
+            <button class="category-btn" data-category="event">Events & Fests</button>
+            <button class="category-btn" data-category="internship">Internships</button>
+            <button class="category-btn" data-category="competition">Competitions</button>
+        </div>
+
+        <!-- Activities Grid -->
+        <div class="activities-grid" id="activitiesGrid">
+            <!-- Workshop: FGD Expert Session -->
+            <div class="activity-card" data-aos="fade-up" data-aos-delay="80" data-category="workshop">
+                <div class="card-poster">
+                    <img src="fgd-expert-session.svg" alt="Focused Group Discussion Expert Session with Howard Wylde">
+                </div>
+                <div class="card-content">
+                    <h3>Focused Group Discussion Expert Session</h3>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="event-link fgd-details-link">View Details &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Workshop 1 -->
+            <div class="activity-card" data-aos="fade-up" data-aos-delay="100" data-category="workshop">
+                <div class="card-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="card-content">
+                    <h3>AI & Machine Learning Workshop</h3>
+                    <span class="tag">Hands-on Training</span>
+                    <p>Intensive 3-day workshop covering Python, TensorFlow, and real-world ML projects. Industry
+                        experts from leading tech companies.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="event-date"><i class="far fa-calendar-alt"></i> March 15-17, 2025</span>
+                    <a href="#" class="event-link">View Details â†’</a>
+                </div>
+            </div>
+
+            <!-- Event 2 -->
+            <div class="activity-card" data-aos="fade-up" data-aos-delay="150" data-category="event">
+                <div class="card-icon">
+                    <i class="fas fa-music"></i>
+                </div>
+                <div class="card-content">
+                    <h3>TechVibes 2025 - Annual Fest</h3>
+                    <span class="tag">Cultural & Tech Fest</span>
+                    <p>Two days of technical competitions, cultural performances, celebrity night, and networking
+                        opportunities with industry leaders.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="event-date"><i class="far fa-calendar-alt"></i> April 5-6, 2025</span>
+                    <a href="#" class="event-link">View Details â†’</a>
+                </div>
+            </div>
+
+            <!-- Event: CHETECH-26 -->
+            <div class="activity-card" data-aos="fade-up" data-aos-delay="175" data-category="event">
+                <div class="card-poster">
+                    <img src="images/chetech.jpeg" alt="CHETECH-26 event poster">
+                </div>
+                <div class="card-content">
+                    <h3>CHETECH-26</h3>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="event-link chetech-details-link">View Details &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Internship 3 -->
+            <div class="activity-card" data-aos="fade-up" data-aos-delay="200" data-category="internship">
+                <div class="card-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Summer Internship Program</h3>
+                    <span class="tag">Corporate Exposure</span>
+                    <p>8-week paid internships at top MNCs including Infosys, TCS, and Microsoft. Real project
+                        experience with mentorship.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="event-date"><i class="far fa-calendar-alt"></i> May-June 2025</span>
+                    <a href="#" class="event-link">Apply Now â†’</a>
+                </div>
+            </div>
+
+            <!-- Internship: Capstone Project Program -->
+            <div class="activity-card" data-aos="fade-up" data-aos-delay="225" data-category="internship">
+                <div class="card-poster">
+                    <img src="images/capstone.png" alt="Capstone Project Program poster">
+                </div>
+                <div class="card-content">
+                    <h3>Capstone Project Program</h3>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="event-link capstone-details-link">View Details &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Competition 4 -->
+            <div class="activity-card" data-aos="fade-up" data-aos-delay="250" data-category="competition">
+                <div class="card-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="card-content">
+                    <h3>CodeClash - National Hackathon</h3>
+                    <span class="tag">Coding Competition</span>
+                    <p>24-hour coding marathon with prizes worth â‚¹1 Lakh. Solve real-world problems and showcase your
+                        skills.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="event-date"><i class="far fa-calendar-alt"></i> February 22-23, 2025</span>
+                    <a href="#" class="event-link">Register â†’</a>
+                </div>
+            </div>
+
+            <!-- Competition: Hacklite 2.0 -->
+            <div class="activity-card" data-aos="fade-up" data-aos-delay="275" data-category="competition">
+                <div class="card-poster">
+                    <img src="images/hacklite2.0.jpeg" alt="Hacklite 2.0 competition poster">
+                </div>
+                <div class="card-content">
+                    <h3>Hacklite 2.0</h3>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="event-link hacklite-details-link">View Details &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Workshop 5 -->
+            <div class="activity-card" data-aos="fade-up" data-aos-delay="300" data-category="workshop">
+                <div class="card-icon">
+                    <i class="fas fa-cloud-arrow-up"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Cloud Computing & DevOps Workshop</h3>
+                    <span class="tag">Industry Certification</span>
+                    <p>Learn AWS, Docker, Kubernetes, and CI/CD pipelines. Get certified and boost your career
+                        prospects.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="event-date"><i class="far fa-calendar-alt"></i> March 28-30, 2025</span>
+                    <a href="#" class="event-link">View Details â†’</a>
+                </div>
+            </div>
+
+            <!-- Event 6 -->
+            <div class="activity-card" data-aos="fade-up" data-aos-delay="350" data-category="event">
+                <div class="card-icon">
+                    <i class="fas fa-chalkboard-user"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Leadership Summit 2025</h3>
+                    <span class="tag">Guest Lecture Series</span>
+                    <p>Renowned CEOs and entrepreneurs share insights on leadership, innovation, and career growth.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="event-date"><i class="far fa-calendar-alt"></i> March 10, 2025</span>
+                    <a href="#" class="event-link">View Details â†’</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-modal" id="fgdDetailsModal" aria-hidden="true">
+            <div class="details-dialog" role="dialog" aria-modal="true" aria-labelledby="fgdDetailsTitle">
+                <button class="details-close" type="button" aria-label="Close details"><i
+                        class="fas fa-times"></i></button>
+                <div class="details-body">
+                    <img src="fgd-expert-session.svg" alt="Focused Group Discussion Expert Session with Howard Wylde">
+                    <div class="details-copy">
+                        <h3 id="fgdDetailsTitle">Focused Group Discussion Expert Session</h3>
+                        <span class="tag">Workshop | 26 March 2026</span>
+                        <p>Focused Group Discussion (FGD) Expert Session was conducted on 26-03-2026 by Mr. Howard
+                            Wylde, providing valuable insights into effective GD strategies and evaluation techniques.
+                        </p>
+                        <p>The session included a comprehensive debriefing on the conduct of three sets of Group
+                            Discussions, where students actively participated and demonstrated analytical and
+                            communication skills.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-modal" id="chetechDetailsModal" aria-hidden="true">
+            <div class="details-dialog" role="dialog" aria-modal="true" aria-labelledby="chetechDetailsTitle">
+                <button class="details-close" type="button" aria-label="Close details"><i
+                        class="fas fa-times"></i></button>
+                <div class="details-body">
+                    <img src="images/chetech.jpeg" alt="CHETECH-26 event poster">
+                    <div class="details-copy">
+                        <h3 id="chetechDetailsTitle">CHETECH-26</h3>
+                        <span class="tag">Events & Fests | 8 May 2026</span>
+                        <p>A Platform for Problem Solvers.</p>
+                        <p>CHETECH-26 invites sharp minds to build, debug, and deliver.</p>
+                        <p>Legacy is built through action on 8th May 2026.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-modal" id="capstoneDetailsModal" aria-hidden="true">
+            <div class="details-dialog" role="dialog" aria-modal="true" aria-labelledby="capstoneDetailsTitle">
+                <button class="details-close" type="button" aria-label="Close details"><i
+                        class="fas fa-times"></i></button>
+                <div class="details-body">
+                    <img src="images/capstone.png" alt="Capstone Project Program poster">
+                    <div class="details-copy">
+                        <h3 id="capstoneDetailsTitle">Capstone Project Program</h3>
+                        <span class="tag">Internship | Learn by Doing</span>
+                        <p>The Capstone Project Program helps students build real-world, portfolio-ready projects using
+                            real data, real problems, and real impact.</p>
+                        <p>The program focuses on Data, Database, Operations Research, and Linear Algebra, covering data
+                            collection, preprocessing, SQL querying, optimization models, linear programming, matrix
+                            operations, and applications in machine learning.</p>
+                        <p>Students work through problem identification, data and model development, analysis and
+                            optimization, results reporting, and a final capstone deliverable.</p>
+                        <p>Tools and technologies include Python, MySQL, Excel, PuLP, and NumPy. The session is guided
+                            by Dr. Bhargav Revankar, Professor and HoD MCA.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="details-modal" id="hackliteDetailsModal" aria-hidden="true">
+            <div class="details-dialog" role="dialog" aria-modal="true" aria-labelledby="hackliteDetailsTitle">
+                <button class="details-close" type="button" aria-label="Close details"><i
+                        class="fas fa-times"></i></button>
+                <div class="details-body">
+                    <img src="images/hacklite2.0.jpeg" alt="Hacklite 2.0 competition poster">
+                    <div class="details-copy">
+                        <h3 id="hackliteDetailsTitle">Hacklite 2.0</h3>
+                        <span class="tag">Competition | Hackathon</span>
+                        <p>Hacklite 2.0 successfully brought together innovation, collaboration, and technical
+                            excellence.</p>
+                        <p>The hackathon witnessed participation from 10 teams across 5 clubs, each working on selected
+                            problem statements to develop fully functional web applications, including deployment.</p>
+                        <p>A unique aspect of the event was the remote development phase, where teams collaborated
+                            virtually, demonstrating strong coordination, communication, and adaptability.</p>
+                        <p>The final presentations reflected impressive problem-solving approaches, creativity, and
+                            practical implementation skills.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upcoming Events Timeline -->
+        <div class="upcoming-events" data-aos="fade-up">
+            <h2 class="section-title">Upcoming Events</h2>
+            <div class="events-timeline">
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
+                    <div class="event-date-box">
+                        <div class="day">15</div>
+                        <div class="month">MAR</div>
+                    </div>
+                    <div class="event-details">
+                        <h4>AI & ML Workshop Registration Deadline</h4>
+                        <p>Last day to register for the AI & Machine Learning workshop with industry experts.</p>
+                        <div class="event-location"><i class="fas fa-map-marker-alt"></i> Online / Campus</div>
+                    </div>
+                    <a href="#" class="register-btn">Register Now</a>
+                </div>
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
+                    <div class="event-date-box">
+                        <div class="day">22</div>
+                        <div class="month">FEB</div>
+                    </div>
+                    <div class="event-details">
+                        <h4>CodeClash Hackathon - Final Round</h4>
+                        <p>Grand finale of the national-level hackathon. Winners announced at closing ceremony.</p>
+                        <div class="event-location"><i class="fas fa-map-marker-alt"></i> CBS Auditorium</div>
+                    </div>
+                    <a href="#" class="register-btn">View Details</a>
+                </div>
+                <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
+                    <div class="event-date-box">
+                        <div class="day">05</div>
+                        <div class="month">APR</div>
+                    </div>
+                    <div class="event-details">
+                        <h4>TechVibes 2025 - Inauguration</h4>
+                        <p>Opening ceremony of the annual tech-cultural fest with celebrity guest.</p>
+                        <div class="event-location"><i class="fas fa-map-marker-alt"></i> CBS Open Ground</div>
+                    </div>
+                    <a href="#" class="register-btn">Get Pass</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo Gallery Preview -->
+        <div class="gallery-preview" data-aos="fade-up">
+            <h2 class="section-title">Moments from CBS</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="gallery-icon">
+                        <i class="fas fa-camera-retro"></i>
+                    </div>
+                    <h4>Tech Fest 2024</h4>
+                    <p>Highlights from our annual technology festival</p>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="gallery-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h4>NSS Activities</h4>
+                    <p>Community service and outreach programs</p>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="gallery-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h4>Sports Day 2024</h4>
+                    <p>Annual sports competition winners</p>
+                </div>
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="gallery-icon">
+                        <i class="fas fa-chalkboard"></i>
+                    </div>
+                    <h4>Guest Lectures</h4>
+                    <p>Industry experts inspiring students</p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <footer class="premium-footer">
+            <div class="footer-waves">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                    <path fill="#6366f1" fill-opacity="0.25"
+                        d="M0,192L48,197.3C96,203,192,213,288,208C384,203,480,181,576,176C672,171,768,181,864,197.3C960,213,1056,235,1152,224C1248,213,1344,171,1392,149.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                    </path>
+                    <path fill="#06b6d4" fill-opacity="0.15"
+                        d="M0,256L48,240C96,224,192,192,288,186.7C384,181,480,203,576,224C672,245,768,267,864,256C960,245,1056,203,1152,192C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                    </path>
+                </svg>
+            </div>
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <h3><i class="fas fa-graduation-cap"></i> Chetan Business School</h3>
+                    <p>Institute of Management, IT & Research<br>Approved by AICTE | Affiliated to Karnataka University,
+                        Dharwad</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About CBS</a></li>
+                        <li><a href="programs.html"><i class="fas fa-chevron-right"></i> MCA Program</a></li>
+                        <li><a href="placement.html"><i class="fas fa-chevron-right"></i> Placements</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Photo Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Master of Computer Applications</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Master of Business Administration</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Research Programs</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Certifications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p style="font-size:0.8rem; margin-bottom:1rem; color:#cffafe;">Subscribe for latest updates &
+                        events</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button><i class="fas fa-paper-plane"></i> Subscribe</button>
+                    </div>
+                    <div style="margin-top: 1.5rem;">
+                        <p style="font-size:0.8rem;"><i class="fas fa-map-marker-alt"></i> 100ft Road, Tajnagar,
+                            Hubballi, Karnataka 580031</p>
+                        <p style="font-size:0.8rem; margin-top:6px;"><i class="fas fa-envelope"></i>
+                            info@chetanschool.org | <i class="fas fa-phone-alt"></i> +91 733-787-9532</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Â© 2025 Chetan Business School - All Rights Reserved. | Designed with <i class="fas fa-heart"
+                        style="color:#06b6d4;"></i> for future innovators</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Category Filter Functionality
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const activityCards = document.querySelectorAll('.activity-card');
+
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const category = btn.getAttribute('data-category');
+
+                // Filter cards
+                activityCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeUp 0.5s ease-out';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // FGD workshop details modal
+        const fgdDetailsLink = document.querySelector('.fgd-details-link');
+        const fgdDetailsModal = document.getElementById('fgdDetailsModal');
+        const fgdDetailsClose = fgdDetailsModal.querySelector('.details-close');
+
+        function openFgdDetails() {
+            fgdDetailsModal.classList.add('active');
+            fgdDetailsModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFgdDetails() {
+            fgdDetailsModal.classList.remove('active');
+            fgdDetailsModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        fgdDetailsLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            openFgdDetails();
+        });
+
+        fgdDetailsClose.addEventListener('click', closeFgdDetails);
+        fgdDetailsModal.addEventListener('click', function (event) {
+            if (event.target === fgdDetailsModal) {
+                closeFgdDetails();
+            }
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && fgdDetailsModal.classList.contains('active')) {
+                closeFgdDetails();
+            }
+        });
+
+        // CHETECH-26 event details modal
+        const chetechDetailsLink = document.querySelector('.chetech-details-link');
+        const chetechDetailsModal = document.getElementById('chetechDetailsModal');
+        const chetechDetailsClose = chetechDetailsModal.querySelector('.details-close');
+
+        function openChetechDetails() {
+            chetechDetailsModal.classList.add('active');
+            chetechDetailsModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeChetechDetails() {
+            chetechDetailsModal.classList.remove('active');
+            chetechDetailsModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        chetechDetailsLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            openChetechDetails();
+        });
+
+        chetechDetailsClose.addEventListener('click', closeChetechDetails);
+        chetechDetailsModal.addEventListener('click', function (event) {
+            if (event.target === chetechDetailsModal) {
+                closeChetechDetails();
+            }
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && chetechDetailsModal.classList.contains('active')) {
+                closeChetechDetails();
+            }
+        });
+
+        // Capstone internship details modal
+        const capstoneDetailsLink = document.querySelector('.capstone-details-link');
+        const capstoneDetailsModal = document.getElementById('capstoneDetailsModal');
+        const capstoneDetailsClose = capstoneDetailsModal.querySelector('.details-close');
+
+        function openCapstoneDetails() {
+            capstoneDetailsModal.classList.add('active');
+            capstoneDetailsModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCapstoneDetails() {
+            capstoneDetailsModal.classList.remove('active');
+            capstoneDetailsModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        capstoneDetailsLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            openCapstoneDetails();
+        });
+
+        capstoneDetailsClose.addEventListener('click', closeCapstoneDetails);
+        capstoneDetailsModal.addEventListener('click', function (event) {
+            if (event.target === capstoneDetailsModal) {
+                closeCapstoneDetails();
+            }
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && capstoneDetailsModal.classList.contains('active')) {
+                closeCapstoneDetails();
+            }
+        });
+
+        // Hacklite 2.0 competition details modal
+        const hackliteDetailsLink = document.querySelector('.hacklite-details-link');
+        const hackliteDetailsModal = document.getElementById('hackliteDetailsModal');
+        const hackliteDetailsClose = hackliteDetailsModal.querySelector('.details-close');
+
+        function openHackliteDetails() {
+            hackliteDetailsModal.classList.add('active');
+            hackliteDetailsModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeHackliteDetails() {
+            hackliteDetailsModal.classList.remove('active');
+            hackliteDetailsModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        hackliteDetailsLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            openHackliteDetails();
+        });
+
+        hackliteDetailsClose.addEventListener('click', closeHackliteDetails);
+        hackliteDetailsModal.addEventListener('click', function (event) {
+            if (event.target === hackliteDetailsModal) {
+                closeHackliteDetails();
+            }
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && hackliteDetailsModal.classList.contains('active')) {
+                closeHackliteDetails();
+            }
+        });
+    </script>
+    <script src="enroll-modal.js"></script>
+
+    <link rel="stylesheet" href="css/chatbot.css">
+    <script src="js/chatbot.js"></script>
+</body>
+
+</html>
